@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Дронова Полина Олеговна</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #7f8c6b; /* оливковый фон */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px 16px 50px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      max-width: 420px;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Шапка с баннером */
+    .header-banner {
+      width: 100%;
+      height: 160px;
+      background-image: url('https://avatars.mds.yandex.net/i?id=dcf3cdb3fb65bc0592f3c2482c3d1084_l-10604114-images-thumbs&n=13');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Затемнение для читаемости */
+    .header-banner::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.95), transparent);
+      pointer-events: none;
+    }
+
+    /* Фото Полины — закруглённое, со свечением, поверх баннера */
+    .photo-wrapper {
+      position: relative;
+      z-index: 2;
+      margin-top: -58px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .photo-circle {
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      box-shadow:
+        0 0 0 6px rgba(180, 190, 150, 0.35),
+        0 0 24px rgba(160, 170, 120, 0.5),
+        0 8px 20px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-circle:hover {
+      transform: scale(1.03);
+      box-shadow:
+        0 0 0 6px rgba(180, 190, 150, 0.5),
+        0 0 32px rgba(160, 170, 120, 0.65),
+        0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Контентная часть */
+    .content-inner {
+      padding: 12px 22px 36px;
+    }
+
+    /* Заголовок */
+    .header-name {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.8px;
+      color: #1e1e1e;
+      margin-bottom: 2px;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .header-subtitle {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #7f7f6e;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .header-essence {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4a4a38;
+      background: #f0f0e4;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 28px;
+      letter-spacing: -0.2px;
+      text-align: center;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    /* Карточки */
+    .card {
+      background: #fafaf7;
+      border-radius: 24px;
+      padding: 22px 18px;
+      margin-bottom: 20px;
+      border: 1px solid #eaeae2;
+      transition: all 0.25s ease;
+      animation: fadeRise 0.7s ease forwards;
+      opacity: 0;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.05s;
+    }
+    .card:nth-child(3) {
+      animation-delay: 0.1s;
+    }
+    .card:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+    .card:nth-child(5) {
+      animation-delay: 0.2s;
+    }
+    .card:nth-child(6) {
+      animation-delay: 0.25s;
+    }
+
+    @keyframes fadeRise {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      border-color: #c4c4b0;
+      box-shadow: 0 6px 16px rgba(107, 107, 86, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2b2b21;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3e3e2f;
+      margin: 16px 0 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2f2f2a;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 8px;
+    }
+
+    .card li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: #2f2f2a;
+    }
+
+    .bullet {
+      color: #8b8b70;
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      flex-shrink: 0;
+    }
+
+    .highlight {
+      background: #e9e9dc;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+      color: #333322;
+      display: inline-block;
+    }
+
+    .highlight-strong {
+      background: #dcdcc8;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #2b2b1a;
+      display: inline-block;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c0c0a8, transparent);
+      margin: 18px 0 14px;
+    }
+
+    .emoji-big {
+      font-size: 1.9rem;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.04));
+    }
+
+    .quote-block {
+      background: #ffffff;
+      border-left: 3px solid #b3b398;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 14px 0;
+      font-style: italic;
+      color: #3e3e32;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .phase-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .phase-item {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 14px 16px;
+      border: 1px solid #e8e8db;
+    }
+
+    .phase-item strong {
+      color: #4a4a34;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .phase-item span {
+      font-size: 0.9rem;
+      color: #4f4f3e;
+    }
+
+    .small-note {
+      font-size: 0.8rem;
+      color: #8f8f7e;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+      font-style: italic;
+    }
+
+    .final-signature {
+      margin-top: 24px;
+      color: #9a9a85;
+      font-size: 0.8rem;
+      text-align: center;
+      letter-spacing: 0.6px;
+      border-top: 1px solid #e8e8db;
+      padding-top: 20px;
+    }
+
+    .card h2 .emoji-big {
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover h2 .emoji-big {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        max-width: 100%;
+      }
+      .header-name {
+        font-size: 2.1rem;
+      }
+      .card {
+        padding: 18px 14px;
+      }
+      .photo-circle {
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Шапка с баннером -->
+    <div class="header-banner"></div>
+
+    <!-- Фото Полины со свечением -->
+    <div class="photo-wrapper">
+      <img
+        src="https://p2.zoon.ru/d/7/69453a1790d3bf57b007174a_69453a7165a193.55600844.jpg"
+        alt="Полина Олеговна"
+        class="photo-circle"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content-inner">
+      <!-- Имя и суть -->
+      <h1 class="header-name">Полина Олеговна</h1>
+      <div class="header-subtitle">дизайн человека</div>
+      <div class="header-essence">🌟 Манифестирующий Генератор</div>
+
+      <!-- Карточка 1: Манифестирующий Генератор -->
+      <div class="card">
+        <h2>
+          <span class="emoji-big">🌟</span> Вы — Манифестирующий Генератор
+        </h2>
+        <p><span class="highlight-strong">Энергия, которой нужен отклик</span></p>
+        <p>Вы пришли в этот мир с огромным запасом созидательной энергии. Ваша природа — быть быстрой, многозадачной и продуктивной. Но главная ловушка, которая ведёт к разочарованию и выгоранию, — действовать из ума, на «силе воли» или потому что «так надо».</p>
+
+        <h3>Жить в гармонии для вас означает:</h3>
+        <ul>
+          <li>
+            <span class="bullet">1.</span>
+            <span><strong>Никогда не инициировать действия из головы.</strong> Ваш ум — прекрасный советник для других, но плохой командир для вас. Прежде чем что-то сделать, спросите своё тело. Буквально: «Хочу ли я этим заниматься?». Слушайте первый, тихий отклик из живота — «ага» (да, тянет) или «не-а» (нет, сжимается). Если отклика нет — не делайте. Это убережёт вас от тысяч чужих дел.</span>
+          </li>
+          <li>
+            <span class="bullet">2.</span>
+            <span><strong>Информировать перед тем, как действовать.</strong> Когда внутреннее «да» получено, скажите тем, кого это коснётся, что вы собираетесь сделать. Не спрашивайте разрешения — просто ставьте в известность. Это убирает сопротивление окружающих и позволяет вашей энергии течь свободно, без препятствий.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Карточка 2: Эмоциональный Авторитет -->
+      <div class="card">
+        <h2>
+          <span class="emoji-big">🌊</span> Ваш Внутренний Компас
+        </h2>
+        <p><span class="highlight-strong">Эмоциональный Авторитет</span></p>
+        <p>У вас нет мгновенной правды. Любое решение, которое кажется очевидным прямо сейчас, — иллюзия, вызванная пиком или спадом эмоциональной волны.</p>
+
+        <h3>Чтобы жить в гармонии:</h3>
+        <ul>
+          <li>
+            <span class="bullet">•</span>
+            <span><strong>Признайте, что ясность приходит со временем.</strong> Ваш девиз: «Я не знаю прямо сейчас, мне нужно это пережить».</span>
+          </li>
+          <li>
+            <span class="bullet">•</span>
+            <span><strong>Дайте себе паузу минимум в 24 часа</strong> (а лучше — дольше) перед важным решением. Проживите все оттенки чувств: от восторга до страха и обратно. Истинное решение — то, которое останется для вас верным, когда эмоциональная волна успокоится до нейтрального фона. Это ваша «тихая гавань» истины.</span>
+          </li>
+        </ul>
+        <div class="quote-block">
+          «Я не знаю прямо сейчас, мне нужно это пережить»
+        </div>
+      </div>
+
+      <!-- Карточка 3: Профиль 4/6 -->
+      <div class="card">
+        <h2>
+          <span class="emoji-big">🏛</span> Ваш Жизненный Путь
+        </h2>
+        <p><span class="highlight-strong">Профиль 4/6 — Оппортунист, становящийся Ролевой Моделью</span></p>
+        <p>Ваша жизнь — это уникальный трёхэтапный роман, и сейчас вы на пороге самого важного его раздела.</p>
+
+        <div class="phase-timeline">
+          <div class="phase-item">
+            <strong>🞄 До 30 лет</strong>
+            <span>Фаза проб и ошибок (уже позади). Вы активно пробовали жизнь на вкус, часто набивая шишки. Это не было «неправильно» — так вы собирали бесценный, личный опыт, который теперь станет вашей мудростью.</span>
+          </div>
+          <div class="phase-item">
+            <strong>🞄 С 30 до 50 лет</strong>
+            <span>«Жизнь на крыше». Наступает время, когда ваша душа требует отстранения. Вы будете чувствовать желание отойти от активной социальной гонки, меньше «пробовать» и больше наблюдать, анализировать пережитое. Это не депрессия и не лень. Это естественный для вас процесс созревания души. Позвольте себе этот период. Не корите себя за желание побыть одной. Именно сейчас пережитый опыт превращается в ту самую мудрость, за которой позже к вам будут приходить люди. Возможности и поддержка в этот период приходят только через ваш узкий, доверительный круг близких людей.</span>
+          </div>
+          <div class="phase-item">
+            <strong>🞄 После 50 лет</strong>
+            <span>Становление Ролевой Моделью. Вы естественным образом начнёте излучать ту мудрость, которую накопили. Вам не нужно будет никого учить или спасать — люди сами будут чувствовать в вас пример и опору. Ваша жизнь, прожитая в соответствии со своей природой, станет вашим главным даром миру.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Карточка 4: Сила в близких связях -->
+      <div class="card">
+        <h2>
+          <span class="emoji-big">🤝</span> Ваша сила — в близких связях
+        </h2>
+        <p>Ваша <span class="highlight">4-я линия</span> означает, что вы человек круга. Ваша удача, ваши лучшие возможности и настоящая дружба никогда не придут от незнакомцев в сети или из случайных связей. Они рождаются только в кругу доверительного, душевного общения с теми, кого вы знаете и кому доверяете.</p>
+        <p><strong>Инвестируйте время и душу в этих людей. Берегите этот сад.</strong></p>
+      </div>
+
+      <!-- Карточка 5: Ежедневная гармония -->
+      <div class="card">
+        <h2>
+          <span class="emoji-big">🌿</span> Как это объединить в ежедневной гармонии
+        </h2>
+        <p>Ваш рецепт счастливой и правильной для вас жизни — это не план достижений, а <span class="highlight">процесс проживания</span>.</p>
+        <ul>
+          <li>
+            <span class="bullet">•</span>
+            <span>Каждое утро задавайте себе вопрос телом, а не умом: «На что у меня есть энергия сегодня?». Получив отклик, начинайте день.</span>
+          </li>
+          <li>
+            <span class="bullet">•</span>
+            <span>Когда появится импульс что-то изменить или куда-то броситься — сделайте паузу и скажите: «Я подумаю об этом завтра, мне нужно это прочувствовать».</span>
+          </li>
+          <li>
+            <span class="bullet">•</span>
+            <span>И, наконец, зная, что вы сейчас в фазе «отстранения», позвольте себе не соответствовать ожиданиям вечной активности. Ваша главная работа сейчас — наблюдать жизнь и копить внутреннюю тишину, из которой позже родится ваша истинная сила.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Подпись -->
+      <div class="final-signature">
+        самой прекрасной и милой девочке<br>✦ дизайн человека ✦
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Лёгкая интерактивность: при касании карточки — мягкий отклик
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        this.style.transition = 'all 0.15s ease';
+        this.style.backgroundColor = '#f7f7f0';
+        setTimeout(() => {
+          this.style.backgroundColor = '';
+        }, 180);
+      });
+    });
+
+    console.log('💚 Сайт для Полины Олеговны — с заботой и всей душой.');
+  </script>
+</body>
+</html>
